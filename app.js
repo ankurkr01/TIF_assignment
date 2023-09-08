@@ -16,6 +16,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser())
 
 
+// routes import 
+const userroutes = require('./routes/userRoutes')
+
+
+app.use('/v1/auth', userroutes);
 
 
 // middleware for Error 
