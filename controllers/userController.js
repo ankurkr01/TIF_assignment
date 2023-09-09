@@ -51,3 +51,15 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   
     sendToken(user, 200, res);
   });
+
+  // Get user Details 
+exports.getUserDetails = catchAsyncErrors(async (req, res, next)=>{
+  console.log(req.user);
+  const user = await User.findById(req.user.id);
+
+  res.status(200).json({
+    success:true,
+    user
+  })
+
+})
