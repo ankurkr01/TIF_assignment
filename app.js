@@ -18,9 +18,11 @@ app.use(cookieParser())
 
 // routes import 
 const userroutes = require('./routes/userRoutes')
+const roleroutes = require('./routes/roleRoutes')
 
 
 app.use('/v1/auth', userroutes);
+app.use('/v1', roleroutes);
 
 
 // middleware for Error 

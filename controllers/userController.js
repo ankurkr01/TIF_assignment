@@ -54,8 +54,8 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
   // Get user Details 
 exports.getUserDetails = catchAsyncErrors(async (req, res, next)=>{
-  console.log(req.user);
-  const user = await User.findById(req.user.id);
+  // console.log(req.user); 
+  const user = await User.find({id:req.user.id});
 
   res.status(200).json({
     success:true,
