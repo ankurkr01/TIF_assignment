@@ -53,6 +53,10 @@ exports.allCommunity = catchAsyncErrors(async (req, res, next) => {
 
 })
 
+
+// Get All Members
+
+
 exports.allMembers = catchAsyncErrors(async (req, res, next) => {
 
     const communityId = req.params.id;
@@ -71,7 +75,12 @@ exports.allMembers = catchAsyncErrors(async (req, res, next) => {
         model: 'Role',
         select: 'name'
     }]), req.query)
+    
     let members = await apifeatures.query.clone();
+    if (!members) {
+        return next(new Errorhandler(`community not exist with the given id ${req.params.id}`,400));
+      }
+
     apifeatures.pagination(resultPerPage);
 
     members = await apifeatures.query;
@@ -89,9 +98,9 @@ exports.allMembers = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({ success: true, content: { mata: { total: memberCount, pages: pages }, data: members } })
 })
 
+// Get My Owned Community
+
 exports.myowneCommunity = catchAsyncErrors(async(req, res , next)=>{
-
-
 
     const resultPerPage = 10;
 
@@ -114,6 +123,9 @@ exports.myowneCommunity = catchAsyncErrors(async(req, res , next)=>{
 
 
 })
+
+// Get My Joined Community
+
 
 exports.joinCommunity = catchAsyncErrors(async(req, res, next)=>{
 
@@ -139,3 +151,4 @@ exports.joinCommunity = catchAsyncErrors(async(req, res, next)=>{
 
 
 })
+
