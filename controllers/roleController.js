@@ -8,10 +8,8 @@ const apiFeatures = require("../utils/apiFeatures");
 exports.createRole = catchAsyncErrors(async (req, res, next) => {
 
     const { name } = req.body;
-    const id = Snowflake.generate()
 
     const role = await Role.create({
-        id: id,
         name,
 
     });

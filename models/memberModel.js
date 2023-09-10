@@ -3,19 +3,17 @@ const mongoose = require('mongoose')
 
 
 const memberSchema = mongoose.Schema({
-    id: {
-        type: String,
-    },
+  
     community: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref:"Community"
     },
     user: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
     role: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref:"Role"
      
     },

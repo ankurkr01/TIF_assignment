@@ -3,9 +3,7 @@ const mongoose = require('mongoose')
 
 
 const communitySchema = mongoose.Schema({
-    id: {
-        type: String,
-    },
+   
     name: {
         type: String,
         required: [true, "Please Enter Community Name"],
@@ -17,9 +15,8 @@ const communitySchema = mongoose.Schema({
        
     },
     owner: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref:"User"
-     
     },
 },{ timestamps: true })
 

@@ -2,9 +2,7 @@ const mongoose = require('mongoose')
 
 
 const roleSchema = mongoose.Schema({
-    id: {
-        type: String,
-    },
+   
     name: {
         type: String,
         required: [true, "Please Enter Role Name"],

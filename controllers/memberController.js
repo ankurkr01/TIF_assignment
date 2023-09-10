@@ -6,10 +6,9 @@ const apiFeatures = require("../utils/apiFeatures");
 exports.addMember = catchAsyncErrors(async(req, res, next)=>{
 
     const { communityId, roleId, userId } = req.body;
-    const id = Snowflake.generate()
+    
 
     const member = await Member.create({
-        id: id,
         community:communityId,
         user:userId,
         role:roleId
